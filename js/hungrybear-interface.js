@@ -10,7 +10,7 @@ $(document).ready(function() {
   fuzzy.setMood();
   let timer = setInterval(() => {
     if(fuzzy.didYouGetEaten()){
-    alert("Feed me now");
+    $('.picture').empty().append('<img src="./img/purse.jpg">' + '<h2>Bobby is upset</h2>')
     $("#food").empty();
     $("#sleep").empty();
     $("#mood").empty();
