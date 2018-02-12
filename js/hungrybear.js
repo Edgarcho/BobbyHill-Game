@@ -1,7 +1,7 @@
 export let bear = {
   foodLevel: 10,
   setHunger: function() {
-    const hungerInterval = setInterval(() => {
+    const hungerInterval = setInterval(() => { //bear.setHunger for results
       this.foodLevel--;
       if (this.didYouGetEaten() == true) {
         clearInterval(hungerInterval);
@@ -16,11 +16,15 @@ export let bear = {
       return true;
     }
   },
-  feed: function(amount) {
-    let that = this;
-    return function(food) {
-      that.foodLevel += amount
-      return `The bear ate the ${food}! Food level goes up ${amount}!`
+  feed() {
+      this.foodLevel = 10;
     }
-  }
 };
+
+bear.eatSmall = bear.feed(5);
+bear.eatMedium = bear.feed(10);
+bear.eatLarge = bear.feed(15);
+bear.eatYuck = bear.feed(-10);
+bear.eatPowerUp = bear.feed(50);
+bear.eatSpecialBonus = bear.feed(100);
+bear.eatWeirdThing = bear.feed(Math.floor((Math.random() * 20) + 1));

@@ -35,6 +35,12 @@ it('should get very hungry if 10 seconds pass without feeding', function() {
   expect(fuzzy.didYouGetEaten()).toEqual(true);
 });
 
+it('should return that the bear ate blueberries and the food level should go up 5', function() {
+  expect(fuzzy.eatSmall("blueberries")).toEqual("The bear ate the blueberries! Food level goes up 5!");
+  expect(fuzzy.foodLevel).toEqual(15);
+});
+
+
 //it('should have a food level of ten if it is fed', function() {
 //  jasmine.clock().tick(9001);
 //  fuzzy.feed();

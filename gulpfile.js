@@ -24,19 +24,19 @@ var buildProduction = utilities.env.prod; // append tag '--prod' to gulp command
 
 
 gulp.task('jshint', function() {
-  return gulp.src(['assets/js/*.js', 'spec/*-spec.js'])
+  return gulp.src(['./js/*.js', 'spec/*-spec.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 gulp.task('concatJS', function() {
-  return gulp.src(['./assets/js/*.js'])
+  return gulp.src(['./js/*-interface.js'])
     .pipe(concat('allConcat.js'))
     .pipe(gulp.dest('./tmp'));
 });
 
 gulp.task('concatCSS', function() {
-    return gulp.src(['./assets/css/*.css'])
+    return gulp.src(['./css/*.css'])
       .pipe(concat('app.css'))  // Change to allConcat after browserify issue is solved
       .pipe(gulp.dest('./tmp'));
 });
@@ -112,8 +112,8 @@ gulp.task('serve', ['build'], function() {
     }
   });
 
-  gulp.watch(['assets/js/*.js'], ['jsBuild']); // Run jsBuild if any changes are made to any files with ext .js
-  gulp.watch(['assets/css/*.css'], ['cssBuild']); // Run cssBuild if any changes are made to any files with ext .css
+  gulp.watch(['./js/*.js'], ['jsBuild']); // Run jsBuild if any changes are made to any files with ext .js
+  gulp.watch(['./css/*.css'], ['cssBuild']); // Run cssBuild if any changes are made to any files with ext .css
   gulp.watch(['bower.json'], ['bowerBuild']); // Run bowerBuild if any changes are made to our bower.json file
   gulp.watch(['*.html'], ['htmlBuild']); // Run htmlBuil if any changes are made to any files with ext .html
   //gulp.watch('scss/*.scss', ['cssBuild']);  -- Use Bootstrap's SASS??
